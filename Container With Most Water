@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxArea(vector<int>& heights) {
+        int leftline=0, rightline=heights.size()-1, mw=0;
+        while(leftline<rightline){
+           int  width=rightline-leftline;
+            int height=min(heights[rightline],heights[leftline]);
+            int area=height*width;
+            mw=max(mw, area);
+            if(heights[leftline]>heights[rightline]){
+                rightline--;
+            }
+            else{
+                leftline++;
+            }
+
+        }
+        return mw;
+    }
+};
